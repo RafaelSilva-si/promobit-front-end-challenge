@@ -45,4 +45,21 @@ describe("MovieFilter", () => {
 
         expect(selectButton[0]).toHaveClass("selected");
     })
+
+    it("should render selectButton correctly without selected", () => {
+        mockUseNavigate.mockReturnValue(jest.fn());
+
+        const { rerender } = render(
+            <MovieFilter genres={[{ id: 1, name: "test" }, { id: 2, name: "test2" }, { id: 3, name: "test3" }]} genresSelecteds={[1]} />
+        );
+
+        const selectButton = screen.getAllByRole("button");
+        fireEvent.click(selectButton[0]);
+       
+        rerender(
+            <MovieFilter genres={[{ id: 1, name: "test" }, { id: 2, name: "test2" }, { id: 3, name: "test3" }]} genresSelecteds={[]} />
+        );
+
+        expect(selectButton[0]).not.toHaveClass("selected");
+    })
 })
