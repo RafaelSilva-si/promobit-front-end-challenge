@@ -15,7 +15,7 @@ export const SelectButton: React.FC<Props> = ({
   handleRemove,
 }) => {
   return (
-    <SelectButtonComponent selected={selected} onClick={() => handleSelect(id)}>
+    <SelectButtonComponent selected={selected} onClick={() => handleSelect(id)} className={selected ? "selected" : ""}>
       {label}
       {selected && (
         <CloseButtonComponent

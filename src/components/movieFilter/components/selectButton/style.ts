@@ -21,7 +21,7 @@ export const SelectButtonComponent = styled.button<Props>`
   cursor: pointer;
 `;
 
-export const CloseButtonComponent = styled.button`
+export const CloseButtonComponent = styled.span`
   margin-left: 10px;
   background-color: transparent;
   border: none;

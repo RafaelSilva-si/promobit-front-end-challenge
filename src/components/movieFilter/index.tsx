@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 interface Props {
   genres: Genres[];
-  genresSelecteds: [];
+  genresSelecteds: any[];
 }
 
 export const MovieFilter: React.FC<Props> = ({ genres, genresSelecteds }) => {
