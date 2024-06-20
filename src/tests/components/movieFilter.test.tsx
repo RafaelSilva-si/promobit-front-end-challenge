@@ -2,6 +2,10 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { MovieFilter } from "../../components";
 import { useNavigate } from "react-router-dom";
 
+const mocks = {
+    genres: require("../mocks/genres.json"),
+}
+
 jest.mock("react-router-dom")
 const mockUseNavigate = jest.mocked(useNavigate);
 
@@ -23,7 +27,7 @@ describe("MovieFilter", () => {
     it("should render genreLList correctly", () => {
         mockUseNavigate.mockReturnValue(jest.fn());
 
-        render(<MovieFilter genres={[{ id: 1, name: "test" }, { id: 2, name: "test2" }, { id: 3, name: "test3" }]} genresSelecteds={[]}/>);
+        render(<MovieFilter genres={mocks.genres} genresSelecteds={[]}/>);
 
         const selectButton = screen.getAllByRole("button");
         expect(selectButton).toHaveLength(3);
@@ -33,14 +37,14 @@ describe("MovieFilter", () => {
         mockUseNavigate.mockReturnValue(jest.fn());
 
         const { rerender } = render(
-            <MovieFilter genres={[{ id: 1, name: "test" }, { id: 2, name: "test2" }, { id: 3, name: "test3" }]} genresSelecteds={[]} />
+            <MovieFilter genres={mocks.genres} genresSelecteds={[]} />
         );
     
         const selectButton = screen.getAllByRole("button");
         fireEvent.click(selectButton[0]);
        
         rerender(
-            <MovieFilter genres={[{ id: 1, name: "test" }, { id: 2, name: "test2" }, { id: 3, name: "test3" }]} genresSelecteds={[1]} />
+            <MovieFilter genres={mocks.genres} genresSelecteds={[1]} />
         );
 
         expect(selectButton[0]).toHaveClass("selected");
@@ -50,14 +54,14 @@ describe("MovieFilter", () => {
         mockUseNavigate.mockReturnValue(jest.fn());
 
         const { rerender } = render(
-            <MovieFilter genres={[{ id: 1, name: "test" }, { id: 2, name: "test2" }, { id: 3, name: "test3" }]} genresSelecteds={[1]} />
+            <MovieFilter genres={mocks.genres} genresSelecteds={[1]} />
         );
 
         const selectButton = screen.getAllByRole("button");
         fireEvent.click(selectButton[0]);
        
         rerender(
-            <MovieFilter genres={[{ id: 1, name: "test" }, { id: 2, name: "test2" }, { id: 3, name: "test3" }]} genresSelecteds={[]} />
+            <MovieFilter genres={mocks.genres} genresSelecteds={[]} />
         );
 
         expect(selectButton[0]).not.toHaveClass("selected");
