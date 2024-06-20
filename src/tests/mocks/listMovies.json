@@ -1,0 +1,19 @@
+[
+    {
+      "adult": false,
+      "backdrop_path": "/path/to/backdrop1.jpg",
+      "genre_ids": [1, 2, 3],
+      "id": 1,
+      "original_language": "en",
+      "original_title": "Original Movie 1",
+      "overview": "Overview of movie 1",
+      "popularity": 10,
+      "poster_path": "/path/to/poster1.jpg",
+      "release_date": "2021-01-01",
+      "title": "Movie 1",
+      "video": false,
+      "vote_average": 8,
+      "vote_count": 100
+    }
+  ]
+  
